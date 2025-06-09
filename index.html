@@ -56,7 +56,8 @@
         <label><input type="checkbox" id="millToggle" checked> Mills </label><br>
         <label><input type="checkbox" id="millLabelToggle" checked> Show Mill Labels</label><br>
         <label><input type="checkbox" id="buffer1Toggle"> 1 km Buffer from Mills</label><br>
-        <label><input type="checkbox" id="buffer5Toggle"> 5 km Buffer from Mills</label>
+        <label><input type="checkbox" id="buffer5Toggle"> 5 km Buffer from Mills</label><br>
+        <label><input type="checkbox" id="buffer10Toggle"> 10 km Buffer from Mills</label>
     </div>
 
     <div id="map"></div>
@@ -107,7 +108,7 @@
             popupAnchor: [0, -25]
         });
 
-        let polygonLayer, pointLayer, buffer1Layer = L.layerGroup(), buffer5Layer = L.layerGroup();
+        let polygonLayer, pointLayer, buffer1Layer = L.layerGroup(), buffer5Layer = L.layerGroup(), buffer10Layer = L.layerGroup();
         let millData = null;
         let millLayer;
         let millLabelLayers = [];
@@ -115,7 +116,7 @@
         // Load GeoJSON layers
         // file_url = "https://raw.githubusercontent.com/lighteagle/sc-v1/main/"
         file_url = ""
-        fetch(file_url + 'plot-hasrat-jaya.geojson')
+        fetch(file_url + 'plot-fps-sgo.geojson')
             .then(res => res.json())
             .then(data => {
                 polygonLayer = L.geoJSON(data, {
@@ -165,10 +166,12 @@
             if (!millData) return;
             buffer1Layer.clearLayers();
             buffer5Layer.clearLayers();
+            buffer10Layer.clearLayers();
             millData.features.forEach(feature => {
                 const latlng = L.latLng(feature.geometry.coordinates[1], feature.geometry.coordinates[0]);
                 L.circle(latlng, { radius: 1000, color: 'green', weight: 1, fillOpacity: 0.3, interactive: false }).addTo(buffer1Layer);
                 L.circle(latlng, { radius: 5000, color: 'orange', weight: 1, fillOpacity: 0.2, interactive: false }).addTo(buffer5Layer);
+                L.circle(latlng, { radius: 10000, color: 'yellow', weight: 1, fillOpacity: 0.2, interactive: false }).addTo(buffer10Layer);
             });
         }
 
@@ -213,7 +216,14 @@
                 map.removeLayer(buffer5Layer);
             }
         });
-
+        document.getElementById('buffer10Toggle').addEventListener('change', function () {
+            if (this.checked) {
+                drawBuffers();
+                map.addLayer(buffer10Layer);
+            } else {
+                map.removeLayer(buffer10Layer);
+            }
+        });
         // Fit map to bounds of polygon, point, and mill layers once loaded
         function fitMap() {
             const layers = [];
