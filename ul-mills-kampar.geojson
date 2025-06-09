@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "name": "ul-mills-kampar",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "Name": "PTPN IV Reg III Sei Garo" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [101.112548528637504, 0.671940517983943, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "Name": "PTPN IV Reg III Sei Galuh" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [101.229797620070102, 0.546047720422021, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "Name": "Bina Pitri Jaya Mill" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [101.279314517195004, 0.809089699650974, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "Name": "PT RSI" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [100.528786899828802, 0.678305299984026, 0.0]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "Name": "PKS Ramajaya Pramukti" },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [101.076247499770403, 0.533555399997115, 0.0]
+      }
+    }
+  ]
+}
