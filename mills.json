@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "PPTPN",
+        "Location": "xxxx"
+      },
+      "geometry": {
+        "coordinates": [101.45433610656522, 0.5226888440832624],
+        "type": "Point"
+      },
+      "id": 0
+    }
+  ]
+}
